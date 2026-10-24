@@ -1,41 +1,79 @@
+# Each segment lists model pages (models/<slug>.html, mirrored from company-models by tools/sync_models.py).
 - en: {n: "AI applications and model labs", q: "Who pays for tokens, and at what price?"}
   zh: {n: "AI 應用與模型實驗室", q: "誰為 token 付錢？價格多少？"}
   segs:
     - {s: plan, en: "Application layer", zh: "應用層", en_note: "Separate project, not yet started", zh_note: "另開專案，尚未開始"}
-    - {s: wip, en: "Model labs and their compute bills", zh: "模型實驗室與其算力帳單", en_note: "Lab financial models in progress", zh_note: "實驗室財務模型建置中", link: cm}
+    - s: live
+      en: "Model labs: revenue, compute bills and funding"
+      zh: "模型實驗室：營收、算力帳單與資金"
+      items: [{n: OpenAI, slug: openai}, {n: Anthropic, slug: anthropic}, {n: MiniMax, slug: minimax}, {n: "Zhipu 智譜", slug: zhipu}]
 - en: {n: "Clouds and neoclouds", q: "Who buys the capacity, and can they fund it?"}
   zh: {n: "雲端與新雲", q: "誰買下這些算力？資金撐得住嗎？"}
   segs:
-    - {s: live, en: "Hyperscaler and neocloud revenue and funding models", zh: "大型雲端與新雲的收支與資金模型", en_note: "Company-level models", zh_note: "公司層模型", link: cm}
+    - s: live
+      en: "Hyperscalers"
+      zh: "大型雲端"
+      items: [{n: Microsoft, slug: microsoft}, {n: Alphabet, slug: alphabet}, {n: Amazon, slug: amazon}, {n: Oracle, slug: oracle}]
+    - s: live
+      en: "Neoclouds"
+      zh: "新雲"
+      items: [{n: CoreWeave, slug: coreweave}, {n: Nebius, slug: nebius}, {n: WhiteFiber, slug: whitefiber}]
 - en: {n: "One gigawatt of AI capacity", q: "What can a gigawatt earn, and what does it cost to own?"}
   zh: {n: "1 GW 的 AI 算力", q: "1 GW 能賺多少？持有成本多少？"}
   segs:
-    - {s: live, en: "Tokenomics: from GPU specs to data center P&L", zh: "Tokenomics：從 GPU 規格到資料中心損益", en_note: "Open model with interactive app", zh_note: "公開模型，附互動應用", link: tok}
+    - {s: live, en: "Tokenomics: from GPU specs to data center P&L", zh: "Tokenomics：從 GPU 規格到資料中心損益", en_note: "Open-source model; interactive app under maintenance", zh_note: "原始碼公開；互動應用維修中", url: "https://github.com/YinchenChang/Tokenomics"}
 - en: {n: "Where the capex goes", q: "How is each dollar of a gigawatt split?"}
   zh: {n: "資本支出流向", q: "每 GW 的每一塊錢怎麼分？"}
   segs:
-    - {s: live, en: "Chip content per gigawatt (servers, networking, facility)", zh: "每 GW 晶片內容（伺服器、網通、廠房）", en_note: "Market-level bridge", zh_note: "市場層橋接表", link: cm}
+    - {s: live, en: "Chip content per gigawatt (servers, networking, facility)", zh: "每 GW 晶片內容（伺服器、網通、廠房）", en_note: "Spreadsheet model; web page coming", zh_note: "試算表模型；網頁版製作中"}
 - en: {n: "Accelerators", q: "GPU versus custom ASIC: units versus dollars"}
   zh: {n: "加速器", q: "GPU 與客製 ASIC：顆數與金額"}
   segs:
-    - {s: live, en: "GPU and ASIC share models", zh: "GPU 與 ASIC 份額模型", en_note: "Market and company layers", zh_note: "市場層與公司層", link: cm}
+    - s: live
+      en: "GPU"
+      zh: "GPU"
+      items: [{n: NVIDIA, slug: nvidia}]
+    - {s: wip, en: "Custom ASIC", zh: "客製 ASIC", en_note: "In progress", zh_note: "建置中"}
 - en: {n: "Memory", q: "HBM supply, demand and pricing"}
   zh: {n: "記憶體", q: "HBM 的供需與價格"}
   segs:
-    - {s: live, en: "HBM market model and memory company models", zh: "HBM 市場模型與記憶體公司模型", en_note: "Market and company layers", zh_note: "市場層與公司層", link: cm}
+    - s: live
+      en: "HBM and memory makers"
+      zh: "HBM 與記憶體廠"
+      items: [{n: "SK hynix", slug: skhynix}, {n: Micron, slug: micron}, {n: Samsung, slug: samsung}]
 - en: {n: "Networking", q: "Scale-up inside the rack, scale-out between racks"}
   zh: {n: "網通", q: "機架內 scale-up，機架間 scale-out"}
   segs:
-    - {s: live, en: "AI networking market model", zh: "AI 網通市場模型", en_note: "Market layer plus a system-vendor model", zh_note: "市場層，加一家系統商模型", link: cm}
-- en: {n: "Foundry and advanced packaging", q: "Is wafer and packaging capacity the ceiling?"}
-  zh: {n: "晶圓代工與先進封裝", q: "晶圓與封裝產能是不是上限？"}
+    - s: live
+      en: "Switching systems"
+      zh: "交換器系統"
+      items: [{n: Arista, slug: arista}]
+- en: {n: "Servers, power and cooling", q: "Who assembles the racks and keeps them powered and cool?"}
+  zh: {n: "伺服器、電源與散熱", q: "誰組裝機架、供電與散熱？"}
   segs:
-    - {s: live, en: "Foundry supply-ceiling model; packaging model", zh: "代工供給上限模型；封裝模型", en_note: "Packaging in progress", zh_note: "封裝建置中", link: cm}
-- en: {n: "Equipment and materials", q: "How much tooling does the build-out require?"}
-  zh: {n: "設備與材料", q: "這波建置需要多少設備？"}
+    - s: live
+      en: "Server assembly and power"
+      zh: "伺服器組裝與電源"
+      items: [{n: "Quanta 廣達", slug: quanta}, {n: "Delta 台達電", slug: delta}]
+- en: {n: "Foundry, packaging and substrates", q: "Is wafer and packaging capacity the ceiling?"}
+  zh: {n: "晶圓代工、封裝與載板", q: "晶圓與封裝產能是不是上限？"}
   segs:
-    - {s: live, en: "Equipment market derived from foundry and memory capex", zh: "由代工與記憶體資本支出推導的設備市場", en_note: "Market layer and first company models", zh_note: "市場層與首批公司模型", link: cm}
-    - {s: wip, en: "Japan equipment and materials", zh: "日本設備與材料", en_note: "Further company models in progress", zh_note: "更多公司模型建置中", link: cm}
+    - s: live
+      en: "Foundry and advanced packaging"
+      zh: "晶圓代工與先進封裝"
+      items: [{n: "TSMC 台積電", slug: tsmc}]
+    - s: live
+      en: "Substrates"
+      zh: "載板"
+      items: [{n: Ibiden, slug: ibiden}]
+- en: {n: "Equipment", q: "How much tooling does the build-out require?"}
+  zh: {n: "設備", q: "這波建置需要多少設備？"}
+  segs:
+    - s: live
+      en: "Test and wafer processing equipment"
+      zh: "測試與晶圓加工設備"
+      items: [{n: Advantest, slug: advantest}, {n: Disco, slug: disco}]
+    - {s: wip, en: "More Japan equipment makers", zh: "更多日本設備廠", en_note: "In progress", zh_note: "建置中"}
 - en: {n: "Power and facilities", q: "Electricity, cooling and buildings"}
   zh: {n: "電力與機房", q: "電力、冷卻與建築"}
   segs:

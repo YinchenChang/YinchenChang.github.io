@@ -1,6 +1,4 @@
 {%- assign L = include.lang -%}
-{%- capture tok %}https://github.com/YinchenChang/Tokenomics{% endcapture -%}
-{%- capture cm %}https://github.com/YinchenChang/company-models{% endcapture -%}
 <p class="map-legend">
   <span><span class="dot live"></span>{% if L == 'zh' %}模型已建{% else %}Model built{% endif %}</span>
   <span><span class="dot wip"></span>{% if L == 'zh' %}建置中{% else %}In progress{% endif %}</span>
@@ -11,8 +9,10 @@
   <summary><span class="map-num">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><span class="map-name">{{ layer[L].n }}<span class="map-q">{{ layer[L].q }}</span></span></summary>
   <div class="map-body">
   {%- for s in layer.segs %}
-    {%- assign title = s[L] -%}{%- capture notekey %}{{ L }}_note{% endcapture -%}
-    <div class="map-seg"><span class="dot {{ s.s }}"></span>{% if s.link == 'tok' %}<a href="{{ tok }}">{{ title }}</a>{% elsif s.link == 'cm' %}<a href="{{ cm }}">{{ title }}</a>{% else %}{{ title }}{% endif %}<br><small>{{ s[notekey] }}</small></div>
+    {%- capture notekey %}{{ L }}_note{% endcapture -%}
+    <div class="map-seg"><span class="dot {{ s.s }}"></span>{% if s.url %}<a href="{{ s.url }}">{{ s[L] }}</a>{% else %}{{ s[L] }}{% endif %}
+      {%- if s.items %}<br><span class="map-items">{% for it in s.items %}<a href="{{ '/models/' | append: it.slug | append: '.html' | relative_url }}">{{ it.n }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</span>{% endif %}
+      {%- if s[notekey] %}<br><small>{{ s[notekey] }}</small>{% endif %}</div>
   {%- endfor %}
   </div>
 </details>
