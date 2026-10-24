@@ -17,7 +17,9 @@
     try { chosen = localStorage.getItem("lang"); } catch (e) {}
     var langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ""];
     var prefersZh = /^zh/i.test(langs[0] || "");
-    var want = chosen || (prefersZh ? "zh" : "en");
+    // An explicit choice applies both ways; without one, only English pages switch to Chinese
+    // for Chinese-language browsers, so a shared Chinese link is never bounced to English.
+    var want = chosen || (here === "en" && prefersZh ? "zh" : here);
     if (alt && want !== here) { location.replace(alt); }
     document.addEventListener("click", function (e) {
       var a = e.target.closest && e.target.closest("a.lang-switch");
