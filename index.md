@@ -12,7 +12,7 @@ I am a fund manager in Taipei. I study AI compute as an economic system: what a 
 
 - [AI Compute Investment Map](map/) — the whole stack on one page, with links to the models behind each layer.
 - [Writing](writing/) — essays, published as the research matures.
-- [Tokenomics](https://github.com/YinchenChang/Tokenomics) — my open, first-principles model of AI data center economics ([interactive app](https://tokenomics-calculator.streamlit.app/)).
+- [Tokenomics](https://github.com/YinchenChang/Tokenomics) — my open, first-principles model of AI data center economics (interactive app: under maintenance).
 
 **Latest**
 

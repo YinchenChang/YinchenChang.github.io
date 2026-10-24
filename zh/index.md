@@ -12,7 +12,7 @@ permalink: /zh/
 
 - [AI 算力投資地圖](map/)：整個產業鏈放在一頁，每一層都連到背後的模型。
 - [文章](writing/)：研究成熟一篇，發表一篇。
-- [Tokenomics](https://github.com/YinchenChang/Tokenomics)：我以第一原理建構的 AI 資料中心經濟模型，公開原始碼（[互動應用](https://tokenomics-calculator.streamlit.app/)）。
+- [Tokenomics](https://github.com/YinchenChang/Tokenomics)：我以第一原理建構的 AI 資料中心經濟模型，公開原始碼（互動應用：維修中）。
 
 **最新文章**
 
