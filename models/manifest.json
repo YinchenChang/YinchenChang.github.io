@@ -20,5 +20,6 @@
  "tsmc": "tsmc/dist/20261023_台積電模型_v0.2.1.html",
  "advantest": "advantest/dist/20261023_Advantest模型_v0.2.2.html",
  "disco": "disco/dist/20261023_Disco模型_v0.1.3.html",
- "ibiden": "ibiden/dist/20261024_Ibiden模型_v0.1.html"
+ "ibiden": "ibiden/dist/20261024_Ibiden模型_v0.1.html",
+ "innolight": "innolight/dist/20261024_中際旭創模型_v0.1.html"
 }

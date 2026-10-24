@@ -48,6 +48,10 @@
       en: "Switching systems"
       zh: "交換器系統"
       items: [{n: Arista, slug: arista}]
+    - s: live
+      en: "Optical modules"
+      zh: "光模組"
+      items: [{n: "Innolight 中際旭創", slug: innolight}]
 - en: {n: "Servers, power and cooling", q: "Who assembles the racks and keeps them powered and cool?"}
   zh: {n: "伺服器、電源與散熱", q: "誰組裝機架、供電與散熱？"}
   segs:

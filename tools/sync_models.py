@@ -15,6 +15,7 @@ MODELS = {
     "nvidia": "nvidia", "skhynix": "skhynix", "micron": "micron", "samsung": "samsung",
     "arista": "arista", "quanta": "quanta", "delta": "delta", "tsmc": "tsmc",
     "advantest": "advantest", "disco": "disco", "ibiden": "ibiden",
+    "innolight": "innolight",
 }
 
 def version_key(name: str):
