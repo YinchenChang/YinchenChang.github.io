@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 張銀成 Andy Chang
+title: Andy Chang
 lang: zh
 alt: /
 permalink: /zh/
