@@ -1,0 +1,25 @@
+---
+---
+@import "minima";
+
+.lang-switch { font-weight: 600; }
+.footer-note { font-size: 14px; color: $grey-color; margin: 0; }
+
+/* AI Compute Investment Map — uses the site palette */
+.map-legend { font-size: 14px; color: $grey-color; margin-bottom: 15px; }
+.map-legend span { margin-right: 16px; }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+.dot.live { background: #2e7d4f; } .dot.wip { background: #b26b00; } .dot.plan { background: #9a9a9a; }
+.map-layer { border: 1px solid $grey-color-light; border-radius: 4px; margin: 0 0 8px; }
+.map-layer summary { cursor: pointer; list-style: none; padding: 12px 14px; display: flex; gap: 12px; align-items: baseline; }
+.map-layer summary::-webkit-details-marker { display: none; }
+.map-layer summary::after { content: "›"; margin-left: auto; color: $grey-color; transition: transform .15s; }
+.map-layer[open] summary::after { transform: rotate(90deg); }
+.map-num { color: $grey-color; font-size: 13px; width: 22px; flex: none; }
+.map-name { font-weight: 600; }
+.map-q { display: block; font-weight: 400; font-size: 14px; color: $grey-color; }
+.map-body { padding: 0 14px 10px 48px; font-size: 15px; }
+.map-seg { padding: 6px 0; border-top: 1px dashed $grey-color-light; }
+.map-seg:first-child { border-top: 0; }
+.map-seg small { color: $grey-color; }
+.map-arrow { text-align: center; color: $grey-color; font-size: 12px; margin: -2px 0 6px; }

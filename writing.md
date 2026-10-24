@@ -2,12 +2,10 @@
 layout: page
 title: Writing
 permalink: /writing/
+lang: en
+alt: /zh/writing/
 ---
 
-{% if site.posts.size == 0 %}
-The first essays are being edited. They will appear here.
-{% else %}
-{% for post in site.posts %}
+{% assign posts = site.posts | where: "lang", "en" %}{% for post in posts %}
 - {{ post.date | date: "%Y-%m-%d" }} · [{{ post.title }}]({{ post.url | relative_url }})
 {% endfor %}
-{% endif %}

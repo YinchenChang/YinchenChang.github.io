@@ -2,6 +2,8 @@
 layout: page
 title: About
 permalink: /about/
+lang: en
+alt: /zh/about/
 ---
 
 **Yin-Chen (Andy) Chang** — fund manager at E.SUN Asset Management, Taipei.

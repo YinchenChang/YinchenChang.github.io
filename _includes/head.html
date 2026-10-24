@@ -1,0 +1,28 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- seo -%}
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  {%- feed_meta -%}
+  {%- if page.alt %}
+  <link rel="alternate" hreflang="{% if page.lang == 'zh' %}en{% else %}zh-Hant{% endif %}" href="{{ page.alt | absolute_url }}">
+  {%- endif %}
+  <script>
+  // Language default: readers whose browser language is Chinese land on the Chinese page,
+  // unless they have already chosen a language with the switch (remembered in this browser).
+  (function () {
+    var here = "{{ page.lang | default: 'en' }}", alt = "{{ page.alt | relative_url }}";
+    var chosen = null;
+    try { chosen = localStorage.getItem("lang"); } catch (e) {}
+    var langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ""];
+    var prefersZh = /^zh/i.test(langs[0] || "");
+    var want = chosen || (prefersZh ? "zh" : "en");
+    if (alt && want !== here) { location.replace(alt); }
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a.lang-switch");
+      if (a) { try { localStorage.setItem("lang", here === "zh" ? "en" : "zh"); } catch (err) {} }
+    });
+  })();
+  </script>
+</head>

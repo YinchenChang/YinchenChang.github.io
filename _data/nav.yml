@@ -1,0 +1,14 @@
+en:
+  - title: Map
+    url: /map/
+  - title: Writing
+    url: /writing/
+  - title: About
+    url: /about/
+zh:
+  - title: 地圖
+    url: /zh/map/
+  - title: 文章
+    url: /zh/writing/
+  - title: 關於
+    url: /zh/about/

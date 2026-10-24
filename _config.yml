@@ -1,11 +1,11 @@
 title: Andy Chang
 description: First-principles research on the economics of AI compute — from a gigawatt of data center capacity down to the chips, memory and tools inside it.
 author: Yin-Chen (Andy) Chang
+lang: en
 theme: minima
 github_username: YinchenChang
 twitter_username: kimiochang
-header_pages:
-  - map/index.html
-  - writing.md
-  - about.md
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
 permalink: /writing/:year/:month/:title/

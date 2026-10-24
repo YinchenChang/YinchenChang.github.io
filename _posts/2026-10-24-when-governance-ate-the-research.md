@@ -2,6 +2,8 @@
 layout: post
 title: "When Governance Ate the Research: A Post-Mortem of a Multi-Agent AI Investment System"
 date: 2026-10-24
+lang: en
+alt: /zh/writing/2026/10/when-governance-ate-the-research/
 ---
 
 ## Seven weeks, one position, 1.2 MB of rules
