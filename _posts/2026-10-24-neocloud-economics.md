@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The Neocloud Ledger: Contract Prices Don't Cover the GPU, Only the Funder Differs"
-date: 2026-10-24 16:00:00 +0800
+date: 2026-10-24 14:30:00 +0800
 lang: en
 alt: /zh/writing/2026/10/neocloud-economics/
 ---

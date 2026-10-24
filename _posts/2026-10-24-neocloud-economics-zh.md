@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "新雲的帳：長約價格付不起 GPU 的資本成本，差別只在誰補缺口"
-date: 2026-10-24 16:00:00 +0800
+date: 2026-10-24 14:30:00 +0800
 lang: zh
 alt: /writing/2026/10/neocloud-economics/
 permalink: /zh/writing/2026/10/neocloud-economics/
