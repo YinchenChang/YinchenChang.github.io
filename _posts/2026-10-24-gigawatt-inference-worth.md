@@ -13,7 +13,7 @@ One gigawatt of current-generation capacity (VR200 NVL72), run the way a frontie
 Two caveats come before the number, not after it.
 
 - **This rests on assumptions.** Utilization and production efficiency are not disclosed by any operator; both are assumed and shown as ranges.
-- **The token ledger does not close yet.** The model's paid-token output is about 3x what demand-side data supports. If the whole gap sits on the capacity side, first-year revenue is closer to US$16 billion and the ratio closer to 1.3x. The 4x headline is the upper reading of that unresolved gap.
+- **The token ledger does not close yet.** On a per-gigawatt basis, the model's paid-token output is about 2x what demand-side data supports. If the whole gap sits on the capacity side of each gigawatt, first-year revenue is about US$24 billion and the ratio about 2x. The 4x headline is the upper reading of that unresolved gap.
 
 ## The identity
 
@@ -25,20 +25,20 @@ Everything below comes from one accounting identity, revenue = price × quantity
 - **Utilization** is the share of the year that capacity is actually busy. Base case 41%.
 - **Production yield** is the gap between benchmark throughput and real traffic: uneven request lengths, routing imbalance, failures. The base-case input is 0.85, which works out to about 0.81 of benchmark output once the model re-solves its latency constraints.
 - **Paid share** is how much of the fleet sells tokens at all (next section).
-- **Effective price** is list price after discounts and cached-input pricing. I calibrate it to reported revenue with a realization factor, m = 1.34. That factor exceeds 1 because of the unclosed token ledger above.
+- **Effective price** is list price after discounts and cached-input pricing. I calibrate it to reported revenue with a realization factor, m = 1.355. That factor exceeds 1 because of the unclosed token ledger above.
 
 The first term is physics. The others are where the disagreement lives.
 
 ## From one tier to a fleet
 
-A gigawatt serving only the mid tier all year at 60% utilization would earn about US$308 billion. A realistic fleet earns a fraction of that, because most of the gigawatt never sells a token.
+A gigawatt serving only the mid tier all year at 60% utilization would earn about US$300 billion. A realistic fleet earns a fraction of that, because most of the gigawatt never sells a token.
 
 | VR200, 60% utilization, before production losses | Revenue (US$B/yr) |
 | --- | --- |
 | 1 GW serving only the low tier (GPT-6 Luna) | 59.3 |
-| 1 GW serving only the mid tier (GPT-6.1 Sol) | 307.6 |
+| 1 GW serving only the mid tier (GPT-6.1 Sol) | 300.1 |
 | 1 GW serving only the top tier (GPT-6 Astra) | 335.7 |
-| 1 GW reference fleet, paid tokens only (ideal ceiling) | 67.0 |
+| 1 GW reference fleet, paid tokens only (ideal ceiling) | 66.4 |
 
 The reference fleet allocation is calibrated to OpenAI's reported spending, so treat it as an interested-party anchor:
 
@@ -46,9 +46,9 @@ The reference fleet allocation is calibrated to OpenAI's reported spending, so t
 - **41% external serving (range 30–60%), of which 46% is free.** Free users consume tokens and pay nothing, so only about 22% of the gigawatt sells. The 41% split rests on a reported inference figure; the training figure behind it could not be traced to a primary source, hence the wide range.
 - **Paid tokens are 40% low tier, 45% mid tier, 15% top tier.** The top tier earns about 61% of paid revenue on 15% of paid tokens.
 
-Blended, that is about US$1.96 per million paid tokens, or US$0.47 per million tokens served once free tokens are counted. The question "what is a gigawatt worth" is mostly a question about this allocation, not about chips.
+Blended, that is about US$1.94 per million paid tokens, or US$0.47 per million tokens served once free tokens are counted. The question "what is a gigawatt worth" is mostly a question about this allocation, not about chips.
 
-The ideal ceiling of US$67 billion assumes 60% utilization, no production losses and list-price realization. Moving to the base case (41% utilization, 0.81 yield, m 1.34) gives the headline US$49.5 billion. The two reconcile exactly: 66.95 × (0.41 ÷ 0.60) × 0.806 × 1.343 = 49.51.
+The ideal ceiling of US$66 billion assumes 60% utilization, no production losses and list-price realization. Moving to the base case (41% utilization, 0.81 yield, m 1.355) gives the headline US$49.5 billion. The two reconcile: 66.35 × (0.41 ÷ 0.60) × 0.806 × 1.355 ≈ 49.5.
 
 ## How wide the range is
 
@@ -62,7 +62,7 @@ Utilization and production yield are the two least observable inputs. VR200 refe
 
 The base case (41%, 0.85) is US$49.5 billion. Revenue scales one-for-one with utilization. It does not scale one-for-one with the yield input, because the model re-solves its latency limits: inputs of 0.80, 0.85, 0.90 and 1.00 give actual output of 0.74, 0.81, 0.87 and 1.00.
 
-On the base cost case, the paid fleet covers its holding cost at about 10% utilization. With high-cost hardware and a 0.8 yield input, break-even rises to about 18%. Holding cost itself spans US$9.5–19.8 billion across cost cases.
+On the base cost case, the paid fleet covers its holding cost at about 10% utilization. With high-cost hardware and a 0.8 yield input, break-even rises to about 18%. Holding cost itself spans US$9.2–19.8 billion across cost cases.
 
 The other levers, each moved alone from the base case:
 
@@ -108,7 +108,7 @@ The useful reading is the reverse one. If a lab's reported revenue per gigawatt 
 
 ## Method and inputs
 
-All figures come from my open, first-principles AI data center model ([github.com/YinchenChang/Tokenomics](https://github.com/YinchenChang/Tokenomics)), version 21.2 (model commit 45ce1ca). GW means IT-critical power; facility power adds PUE on top. Figures were extracted and independently recomputed (140 values) before publication. A minor update (v21.3, a lower low-end rack price and one cached-input price) is in progress; it leaves the base holding cost unchanged.
+All figures come from my open, first-principles AI data center model ([github.com/YinchenChang/Tokenomics](https://github.com/YinchenChang/Tokenomics)), version 21.3 (master commit aa17328). GW means IT-critical power; facility power adds PUE on top. The model's full value check (414 items) passed and an independent recomputation found no mismatches. Updated 2026-10-26 from v21.2: a lower low-end rack price, a lower GPT-6.1 Sol cached-input price, and a corrected per-gigawatt basis for the token-ledger caveat; the headline and base holding cost are unchanged.
 
 | Input | Base value | Range used | Basis |
 | --- | --- | --- | --- |
@@ -118,11 +118,11 @@ All figures come from my open, first-principles AI data center model ([github.co
 | Cached-input hit rate | 55% | 30–75% | Assumed |
 | Utilization | 41% | 30–65% (headline range) | Assumed |
 | Production-yield input | 0.85 | 0.8–1.0 | Assumed |
-| Revenue realization factor m | 1.343 | — | Derived; token ledger not closed |
+| Revenue realization factor m | 1.355 | — | Derived; token ledger not closed |
 | Fleet share serving external users | 41% | 30–60% | OpenAI 2025 inference spend share (interested party; training spend not traced to a primary source) |
 | Free share of served tokens | 46% | 35–60% | OpenAI 2025 non-paying inference ÷ total inference, as reported by The Information, Feb 2026, via secondary summaries (interested party) |
 | Capex per GW (VR200) | US$50.3B | model cost cases | Rack prices plus facility build-out; public estimates range from about US$40B to US$49B and have recently been revised down |
-| Holding cost per GW per year | US$12.23B | US$9.5–19.8B | Capital recovery at 10% WACC, 6-year IT life, plus operating costs |
+| Holding cost per GW per year | US$12.23B | US$9.2–19.8B | Capital recovery at 10% WACC, 6-year IT life, plus operating costs |
 
 The headline rests mainly on assumed and derived values. Read it as "under these assumptions", not as a measurement.
 
