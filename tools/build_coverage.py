@@ -9,7 +9,6 @@ Writes:
   coverage/index.html         English coverage table
   zh/coverage/index.html      Chinese coverage table
   stocks/<ticker>/index.html  one company page (Chinese profile)
-  _posts/<date>-coverage-weekly(-zh).md   the weekly note, English and Chinese
   models/<folder>.html        mirror of each non-Taiwan model page
 
 Rules (Andy 2026-10-31):
@@ -158,7 +157,7 @@ def build(cm: Path, today: dt.date):
     cov = {"by_folder": by_folder, "updated": today.isoformat(), "map_version": meta.get("version"),
            "price_note": meta.get("price_date"), "show_tw_rating": SHOW_TW_RATING, "items": rows}
     changes = diff(rows, prev_items, today)
-    posts = weekly_posts(cov, changes, today, first=not prev_items)
+    posts = {}  # weekly essays are written separately (Andy 2026-10-31: no list-style weekly post)
 
     out = {
         "_data/coverage.json": json.dumps(cov, ensure_ascii=False, indent=1),
