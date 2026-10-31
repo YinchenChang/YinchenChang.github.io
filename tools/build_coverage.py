@@ -6,8 +6,7 @@ markets/invest_map/dist/data.json (the map's published data; the map is the auth
 Writes:
   _data/coverage.json         public, sanitized coverage list (used by pages and the NEW badges)
   _data/coverage_state.json   last week's snapshot, used to find what changed (sanitized too)
-  coverage/index.html         English coverage table
-  zh/coverage/index.html      Chinese coverage table
+  _data/map_extra.json        covered companies not yet placed in _data/map.yml, by layer
   stocks/<ticker>/index.html  one company page (Chinese profile)
   models/<folder>.html        mirror of each non-Taiwan model page
 
@@ -157,13 +156,27 @@ def build(cm: Path, today: dt.date):
     cov = {"by_folder": by_folder, "updated": today.isoformat(), "map_version": meta.get("version"),
            "price_note": meta.get("price_date"), "show_tw_rating": SHOW_TW_RATING, "items": rows}
     changes = diff(rows, prev_items, today)
+    # every covered company should sit in one map segment (_data/map.yml tks); new ones go to their layer's
+    # "newly added" line until classified by hand
+    import yaml
+    mp = yaml.safe_load((SITE / "_data/map.yml").read_text(encoding="utf-8"))
+    placed = [str(t) for L in mp for sg in L.get("segs", []) for t in sg.get("tks", [])]
+    dup = sorted({t for t in placed if placed.count(t) > 1})
+    unknown = sorted(set(placed) - {r["tk"] for r in rows})
+    default_layer = {"AI 模型商": 0, "AI 雲端平台": 1, "Neocloud（GPU 租賃）": 1, "運算": 4, "記憶體": 5, "網通": 6,
+                     "伺服器組裝": 7, "電源與散熱": 7, "代工與封測": 8, "載板與 PCB": 8, "設備與材料": 9}
+    extra = {}
+    for r in rows:
+        if r["tk"] not in placed:
+            extra.setdefault(str(default_layer.get(r["seg"], 9)), []).append(r["tk"])
+    if dup or unknown or extra:
+        print(f"map placement: duplicates {dup}, not covered {unknown}, unplaced {extra}")
     posts = {}  # weekly essays are written separately (Andy 2026-10-31: no list-style weekly post)
 
     out = {
         "_data/coverage.json": json.dumps(cov, ensure_ascii=False, indent=1),
+        "_data/map_extra.json": json.dumps(extra, ensure_ascii=False, indent=1),
         "_data/coverage_state.json": json.dumps({"updated": today.isoformat(), "items": state}, ensure_ascii=False, indent=1),
-        "coverage/index.html": table_page(cov, "en"),
-        "zh/coverage/index.html": table_page(cov, "zh"),
     }
     for tk, body in pages.items():
         out[f"stocks/{slug(tk)}/index.html"] = body
@@ -293,7 +306,7 @@ def table_page(cov, lang):
 
 def page_html(r, prof, tw):
     pm = prof["meta"]
-    head = front(f'{r["name"]}（{r["tk"]}）', f'/stocks/{r["slug"]}/', "zh", "/coverage/")
+    head = front(f'{r["name"]}（{r["tk"]}）', f'/stocks/{r["slug"]}/', "zh", "/map/")
     out = [head, CSS]
     if r["new_date"]:
         out.append(f'<p class="cov-note">更新 {r["new_date"]} <span data-new="{r["new_date"]}"></span></p>')
@@ -321,7 +334,7 @@ def page_html(r, prof, tw):
             continue
         out.append(f"<h2>{html.escape(sec)}</h2>\n{hover(frag)}")
     out.append(f'<p class="cov-note">資料日 {pm.get("asof", "")}。數字出處：滑鼠停在虛線底數字或 ⓘ 上即顯示。'
-               f'研究整理，非投資建議。<a href="{{{{ \'/zh/coverage/\' | relative_url }}}}">回個股總表</a></p>')
+               f'研究整理，非投資建議。<a href="{{{{ \'/zh/map/\' | relative_url }}}}">回 AI 算力投資地圖</a></p>')
     return "\n".join(out) + "\n"
 
 

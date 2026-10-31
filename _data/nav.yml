@@ -1,8 +1,6 @@
 en:
   - title: Map
     url: /map/
-  - title: Coverage
-    url: /coverage/
     new: coverage
   - title: Writing
     url: /writing/
@@ -12,8 +10,6 @@ en:
 zh:
   - title: 地圖
     url: /zh/map/
-  - title: 個股
-    url: /zh/coverage/
     new: coverage
   - title: 文章
     url: /zh/writing/

@@ -47,6 +47,6 @@ Anthropic's public S-1 (filed 26 October) lists compute commitments totaling abo
 - Fourth-quarter realized NAND prices, to test the corrected market layer.
 - Whether adding Anthropic's new contracts pushes the break-even year per GW later.
 
-Full company data and models are on the [Coverage]({{ '/coverage/' | relative_url }}) page.
+Each company's page and model is on the [AI Compute Investment Map]({{ '/map/' | relative_url }}).
 
 *All figures come from my own models (versions of 27–31 October 2026). They are internal research, not an independent source. Company figures are from filings and earnings calls, tagged and sourced on each model page. Not investment advice.*

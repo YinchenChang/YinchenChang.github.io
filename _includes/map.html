@@ -11,9 +11,11 @@
   {%- for s in layer.segs %}
     {%- capture notekey %}{{ L }}_note{% endcapture -%}
     <div class="map-seg"><span class="dot {{ s.s }}"></span>{% if s.url %}<a href="{{ s.url }}">{{ s[L] }}</a>{% else %}{{ s[L] }}{% endif %}
-      {%- if s.items %}<br><span class="map-items">{% for it in s.items %}{%- assign sp = site.data.coverage.by_folder[it.slug] -%}<a href="{% if sp %}{{ sp | relative_url }}{% else %}{{ '/models/' | append: it.slug | append: '.html' | relative_url }}{% endif %}">{{ it.n }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</span>{% endif %}
+      {%- if s.tks %}<br><span class="map-items">{% for tk in s.tks %}{% include map_item.html tk=tk %}{% unless forloop.last %} · {% endunless %}{% endfor %}</span>{% endif %}
       {%- if s[notekey] %}<br><small>{{ s[notekey] }}</small>{% endif %}</div>
   {%- endfor %}
+  {%- assign lk = forloop.index0 | append: "" -%}{%- assign extra = site.data.map_extra[lk] -%}
+  {%- if extra %}<div class="map-seg"><span class="dot live"></span>{% if L == 'zh' %}新加入（待分類）{% else %}Newly added (to be classified){% endif %}<br><span class="map-items">{% for tk in extra %}{% include map_item.html tk=tk %}{% unless forloop.last %} · {% endunless %}{% endfor %}</span></div>{% endif %}
   </div>
 </details>
 {%- unless forloop.last %}<div class="map-arrow">↓</div>{% endunless %}

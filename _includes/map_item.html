@@ -1,0 +1,2 @@
+{%- assign c = site.data.coverage.items | where: "tk", include.tk | first -%}
+{%- if c -%}{%- assign nm = c.name -%}{%- if c.has_profile -%}<a href="{{ '/stocks/' | append: c.slug | append: '/' | relative_url }}">{{ nm }}</a>{%- elsif c.model_url -%}<a href="{{ c.model_url | relative_url }}">{{ nm }}</a>{%- else -%}{{ nm }}{%- endif -%}{%- if c.new_date -%}<span data-new="{{ c.new_date }}"></span>{%- endif -%}{%- else -%}{{ include.tk }}{%- endif -%}
