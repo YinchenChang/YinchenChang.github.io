@@ -1,14 +1,22 @@
 en:
   - title: Map
     url: /map/
+  - title: Coverage
+    url: /coverage/
+    new: coverage
   - title: Writing
     url: /writing/
+    new: writing
   - title: About
     url: /about/
 zh:
   - title: 地圖
     url: /zh/map/
+  - title: 個股
+    url: /zh/coverage/
+    new: coverage
   - title: 文章
     url: /zh/writing/
+    new: writing
   - title: 關於
     url: /zh/about/

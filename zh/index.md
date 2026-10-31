@@ -17,5 +17,5 @@ permalink: /zh/
 **最新文章**
 
 {% assign posts = site.posts | where: "lang", "zh" %}{% for post in posts limit: 5 %}
-- {{ post.date | date: "%Y-%m-%d" }} · [{{ post.title }}]({{ post.url | relative_url }})
+- {{ post.date | date: "%Y-%m-%d" }} · [{{ post.title }}]({{ post.url | relative_url }})<span data-new="{{ post.date | date: '%Y-%m-%d' }}"></span>
 {% endfor %}

@@ -11,7 +11,10 @@
       </label>
       <div class="trigger">
         {%- for item in site.data.nav[lang] -%}
-        <a class="page-link" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+        {%- assign nd = nil -%}
+        {%- if item.new == "writing" -%}{%- assign lp = site.posts | where: "lang", lang | first -%}{%- if lp -%}{%- assign nd = lp.date | date: "%Y-%m-%d" -%}{%- endif -%}
+        {%- elsif item.new == "coverage" -%}{%- assign nd = site.data.coverage.updated -%}{%- endif -%}
+        <a class="page-link" href="{{ item.url | relative_url }}">{{ item.title }}{% if nd %}<span data-new="{{ nd }}"></span>{% endif %}</a>
         {%- endfor -%}
         <a class="page-link lang-switch" href="{{ page.alt | default: '/' | relative_url }}" hreflang="{% if lang == 'zh' %}en{% else %}zh-Hant{% endif %}">{% if lang == 'zh' %}English{% else %}中文{% endif %}</a>
       </div>

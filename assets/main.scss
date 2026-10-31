@@ -25,3 +25,9 @@
 .map-arrow { text-align: center; color: $grey-color; font-size: 12px; margin: -2px 0 6px; }
 .map-items { font-size: 15px; }
 .map-items a { white-space: nowrap; }
+
+/* NEW badge (top-right of a new item's name; blinks for 7 days) */
+.new-badge { display: inline-block; vertical-align: super; margin-left: 3px; padding: 0 4px; border-radius: 3px;
+  font-size: 10px; font-weight: 700; line-height: 1.5; color: #fff; background: #d32f2f; animation: newblink 1.2s ease-in-out infinite; }
+@keyframes newblink { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .new-badge { animation: none; } }

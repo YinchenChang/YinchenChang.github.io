@@ -27,4 +27,14 @@
     });
   })();
   </script>
+  <script>
+  // NEW badge: any element with data-new="YYYY-MM-DD" shows a blinking NEW for 7 days after that date.
+  document.addEventListener("DOMContentLoaded", function () {
+    var now = Date.now(), DAY = 864e5;
+    document.querySelectorAll("[data-new]").forEach(function (el) {
+      var d = Date.parse((el.getAttribute("data-new") || "").slice(0, 10) + "T00:00:00+08:00");
+      if (!isNaN(d) && now - d >= 0 && now - d < 7 * DAY) { el.className += " new-badge"; el.textContent = "NEW"; }
+    });
+  });
+  </script>
 </head>

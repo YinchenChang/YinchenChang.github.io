@@ -17,5 +17,5 @@ I am a fund manager in Taipei. I study AI compute as an economic system: what a 
 **Latest**
 
 {% assign posts = site.posts | where: "lang", "en" %}{% for post in posts limit: 5 %}
-- {{ post.date | date: "%Y-%m-%d" }} · [{{ post.title }}]({{ post.url | relative_url }})
+- {{ post.date | date: "%Y-%m-%d" }} · [{{ post.title }}]({{ post.url | relative_url }})<span data-new="{{ post.date | date: '%Y-%m-%d' }}"></span>
 {% endfor %}
