@@ -11,7 +11,7 @@ This was hyperscaler earnings week. Cloud at Microsoft, Alphabet and Amazon all 
 
 ## Azure grew faster than guided, and free cash flow nearly vanished
 
-Azure grew 48% year on year against guidance of 44–45%. After rolling the quarter in, Microsoft's model target went from US$385.56 to US$384.10, effectively unchanged. The reason is cash. With FY2027 capex of about US$204bn on the company's definition, the model leaves only about US$11bn of free cash flow that year. The base case needs about US$8bn of new debt, and buybacks shrink by about US$44bn over two years. Management itself said FY27 free cash flow will be "positive" and that it will raise additional funding "when appropriate". The line that is growing fastest is the line that eats the most cash.
+Azure grew 48% year on year against guidance of 44–45%. After rolling the quarter in, Microsoft's model target went from US$385.56 to US$384.10, effectively unchanged. The reason is cash. This quarter the company gave only a calendar-2026 figure of about US$170bn and said spending will accelerate in the second half of its fiscal year; from that I estimate FY2027 capex (July 2026 to June 2027, including finance leases) at about US$204bn, which leaves only about US$11bn of free cash flow that year. The base case needs about US$8bn of new debt, and buybacks shrink by about US$44bn over two years. Management itself said FY27 free cash flow will be "positive" and that it will raise additional funding "when appropriate". The line that is growing fastest is the line that eats the most cash.
 
 ## Google Cloud doubled; five-year cash after dividends fell from +US$180bn to about zero
 
@@ -43,7 +43,7 @@ Anthropic's public S-1 (filed 26 October) lists compute commitments totaling abo
 
 ## What I am watching next
 
-- Formal 2027 capex numbers from Microsoft and Alphabet; Alphabet's five-year funding sits right at zero.
+- Formal 2027 capex numbers, which neither company has given yet. Alphabet says details come on its fourth-quarter call (early 2027), and its five-year funding sits right at zero; Microsoft has given only about US$170bn for calendar 2026, with no full-year FY2027 figure.
 - Fourth-quarter realized NAND prices, to test the corrected market layer.
 - Whether adding Anthropic's new contracts pushes the break-even year per GW later.
 
