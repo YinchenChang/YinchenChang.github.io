@@ -113,7 +113,8 @@ blockquote { border-left: 3px solid $rule; color: $grey-color-dark; font-style: 
 .card, .card:visited { display: block; border: 1px solid $rule; border-radius: 8px; padding: 16px 18px; background: #fff; color: $text-color; transition: border-color .15s, box-shadow .15s; }
 .card:hover { border-color: $accent; box-shadow: 0 4px 18px rgba(15, 47, 87, .08); color: $text-color; }
 .card b { display: block; font-family: $serif-font-family; color: $accent; font-size: 17px; margin-bottom: 4px; }
-.card span { font-size: 14px; color: $grey-color; line-height: 1.55; display: block; }
+.card > span { font-size: 14px; color: $grey-color; line-height: 1.55; display: block; }
+.card b .new-badge { display: inline-block; font-family: $base-font-family; font-size: 8.5px; padding: 0 3px; margin-left: 4px; vertical-align: 4px; line-height: 1.45; }
 .post-index { list-style: none; margin: 0; }
 .post-index li { display: grid; grid-template-columns: 104px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid $rule; margin: 0; }
 .post-index time { font-size: 13px; color: $grey-color; font-variant-numeric: tabular-nums; padding-top: 3px; }
