@@ -6,6 +6,4 @@ lang: zh
 alt: /writing/
 ---
 
-{% assign posts = site.posts | where: "lang", "zh" %}{% for post in posts %}
-- {{ post.date | date: "%Y-%m-%d" }} · [{{ post.title }}]({{ post.url | relative_url }})<span data-new="{{ post.date | date: '%Y-%m-%d' }}"></span>
-{% endfor %}
+{% include post_index.html lang="zh" limit=100 %}

@@ -5,6 +5,7 @@ date: 2026-10-31 12:10:00 +0800
 lang: en
 alt: /zh/writing/2026/10/cloud-beat-capex-took-it-back/
 permalink: /writing/2026/10/cloud-beat-capex-took-it-back/
+description: "Azure, Google Cloud and AWS all beat my models in the third quarter, yet their targets barely moved: higher capital spending in the same reports took the gain back."
 ---
 
 This was hyperscaler earnings week. Cloud at Microsoft, Alphabet and Amazon all came in ahead of my models, some by a lot. Yet none of the three target prices moved much: the good news was offset by higher capital spending in the same report, or by custom chips that turned out more expensive to own. I also caught two errors in my own models. Short notes below.

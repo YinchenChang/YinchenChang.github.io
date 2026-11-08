@@ -1,33 +1,162 @@
 ---
 ---
+// Site theme: minima (GitHub Pages) with a research-publication finish.
+// Palette: ink on warm white, one navy accent; charts use their own palette (see tools/charts_*.py).
+
+$base-font-family: "Inter", "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+$serif-font-family: "Source Serif 4", "Noto Serif TC", Georgia, "Songti TC", serif;
+$base-font-size:   17px;
+$base-line-height: 1.75;
+$text-color:       #1b1d21;
+$background-color: #fcfcfb;
+$brand-color:      #1c5cab;
+$grey-color:       #6b6a66;
+$grey-color-light: #e4e2dc;
+$grey-color-dark:  #3d3c39;
+$content-width:    760px;
+$accent:           #0f2f57;
+$rule:             #e4e2dc;
+$wash:             #f4f3ef;
+
 @import "minima";
 
-.lang-switch { font-weight: 600; }
-.footer-note { font-size: 14px; color: $grey-color; margin: 0; }
+/* ---------- Base ---------- */
+html { -webkit-text-size-adjust: 100%; }
+body { font-feature-settings: "kern", "liga"; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; letter-spacing: .005em; }
+:lang(zh), [lang="zh"] { letter-spacing: .02em; }
+a { color: $brand-color; text-decoration: none; border-bottom: 1px solid rgba(28, 92, 171, .25); transition: border-color .15s, color .15s; }
+a:hover { color: $accent; text-decoration: none; border-bottom-color: $accent; }
+a:visited { color: $brand-color; }
+h1, h2, h3, h4 { font-family: $serif-font-family; color: $accent; font-weight: 600; letter-spacing: 0; }
+strong { font-weight: 650; color: #111; }
+hr { border: 0; border-top: 1px solid $rule; margin: 40px 0; }
+::selection { background: #cde2fb; }
 
-/* AI Compute Investment Map — uses the site palette */
-.map-legend { font-size: 14px; color: $grey-color; margin-bottom: 15px; }
+/* ---------- Header ---------- */
+.site-header { border-top: 4px solid $accent; border-bottom: 1px solid $rule; background: #fff; min-height: 64px; }
+.site-header .wrapper { display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
+.site-title, .site-title:visited { font-family: $serif-font-family; font-size: 22px; font-weight: 700; color: $accent; letter-spacing: .01em;
+  line-height: 64px; border: 0; float: none; }
+.site-title:hover { border: 0; color: $brand-color; }
+.site-tagline { display: block; font-family: $base-font-family; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: $grey-color; line-height: 1; margin-top: -14px; padding-bottom: 12px; }
+.site-brand { display: flex; flex-direction: column; }
+.site-nav { line-height: 64px; float: none; }
+.site-nav .page-link, .site-nav .page-link:visited { color: $grey-color-dark; font-size: 14px; font-weight: 500; letter-spacing: .04em; border: 0;
+  padding: 4px 0; margin-left: 22px; }
+.site-nav .page-link:hover { color: $accent; border-bottom: 2px solid $accent; }
+.lang-switch { font-weight: 600; }
+.site-nav .lang-switch { border: 1px solid $rule !important; border-radius: 999px; padding: 3px 12px !important; font-size: 13px !important; }
+.site-nav .lang-switch:hover { border-color: $accent !important; }
+@include media-query($on-palm) {
+  .site-header .wrapper { display: block; }
+  .site-nav { position: absolute; top: 12px; right: 15px; line-height: 1.6; }
+  .site-nav .page-link { margin-left: 0; display: block; padding: 6px 10px; }
+  .site-tagline { display: none; }
+}
+
+/* ---------- Page and post ---------- */
+.page-content { padding: 48px 0 64px; }
+.post-header { margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid $rule; }
+.post-kicker { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: $brand-color; margin-bottom: 14px; }
+.post-title, .post-content h1 { font-family: $serif-font-family; font-size: 40px; line-height: 1.22; font-weight: 700; color: $accent; letter-spacing: -.005em; margin-bottom: 14px; }
+@include media-query($on-laptop) { .post-title { font-size: 32px; } }
+.post-dek { font-size: 19px; line-height: 1.6; color: $grey-color-dark; margin: 0 0 18px; }
+.post-meta { font-size: 13px; color: $grey-color; letter-spacing: .03em; margin: 0; }
+.post-meta .sep { margin: 0 8px; color: $rule; }
+.post-meta a { border: 0; }
+.post-content { font-size: 17px; }
+.post-content h2 { font-size: 25px; line-height: 1.35; margin: 52px 0 16px; padding-top: 6px; }
+.post-content h3 { font-size: 19.5px; margin: 34px 0 10px; color: $grey-color-dark; }
+.post-content p, .post-content ul, .post-content ol { margin-bottom: 18px; }
+.post-content li { margin-bottom: 6px; }
+.post-content em { color: $grey-color; }
+.post-content > p:last-child em, .post-content > p:last-child { font-size: 14px; line-height: 1.7; }
+.page-heading { font-family: $serif-font-family; font-size: 32px; color: $accent; margin-bottom: 24px; }
+
+.lede { font-size: 19.5px; line-height: 1.75; color: #24262b; margin-bottom: 30px; }
+.lede::first-letter { font-family: $serif-font-family; }
+
+/* key points card */
+.keypoints { background: $wash; border-left: 3px solid $accent; border-radius: 0 6px 6px 0; padding: 20px 26px 8px; margin: 0 0 40px; font-size: 16px; }
+.keypoints p:first-child { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: $accent; margin-bottom: 8px; }
+.keypoints p:first-child strong { color: $accent; }
+.keypoints ul { margin-left: 18px; }
+.keypoints li { margin-bottom: 8px; line-height: 1.65; }
+
+/* figures */
+.chart { margin: 26px 0 6px; padding: 18px 18px 10px; background: #fff; border: 1px solid $rule; border-radius: 8px; }
+.chart svg { display: block; margin: 0 auto; overflow: visible; }
+.chart-note { font-size: 13px; line-height: 1.6; color: $grey-color; margin: 8px 2px 28px !important; }
+
+/* tables */
+.post-content table, .page-content table { width: 100%; border: 0; border-collapse: collapse; margin: 18px 0 30px; font-size: 14.5px; line-height: 1.55;
+  font-variant-numeric: tabular-nums; display: block; overflow-x: auto; }
+.post-content table th, .page-content table th { background: transparent; border: 0; border-bottom: 2px solid $accent; color: $accent; font-weight: 650;
+  font-size: 12.5px; letter-spacing: .04em; text-align: left; padding: 8px 12px; white-space: nowrap; }
+.post-content table td, .page-content table td { border: 0; border-bottom: 1px solid $rule; padding: 9px 12px; vertical-align: top; }
+.post-content table tr:nth-child(even) td, .page-content table tr:nth-child(even) td { background: transparent; }
+.post-content table tr:hover td { background: $wash; }
+
+blockquote { border-left: 3px solid $rule; color: $grey-color-dark; font-style: normal; font-size: 17px; letter-spacing: 0; padding-left: 18px; }
+
+.sources { font-size: 13.5px; color: $grey-color; border-top: 1px solid $rule; margin-top: 44px; padding-top: 16px; }
+.sources p:first-child { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: $grey-color-dark; margin-bottom: 6px; }
+.sources ul { margin-left: 18px; }
+
+/* ---------- Home and lists ---------- */
+.home-intro { font-family: $serif-font-family; font-size: 24px; line-height: 1.55; color: $accent; margin-bottom: 30px; }
+.section-label { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: $grey-color; margin: 40px 0 10px;
+  padding-bottom: 8px; border-bottom: 1px solid $rule; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 0 0 10px; }
+@include media-query($on-palm) { .cards { grid-template-columns: 1fr; } }
+.card, .card:visited { display: block; border: 1px solid $rule; border-radius: 8px; padding: 16px 18px; background: #fff; color: $text-color; transition: border-color .15s, box-shadow .15s; }
+.card:hover { border-color: $accent; box-shadow: 0 4px 18px rgba(15, 47, 87, .08); color: $text-color; }
+.card b { display: block; font-family: $serif-font-family; color: $accent; font-size: 17px; margin-bottom: 4px; }
+.card span { font-size: 14px; color: $grey-color; line-height: 1.55; display: block; }
+.post-index { list-style: none; margin: 0; }
+.post-index li { display: grid; grid-template-columns: 104px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid $rule; margin: 0; }
+.post-index time { font-size: 13px; color: $grey-color; font-variant-numeric: tabular-nums; padding-top: 3px; }
+.post-index a { font-family: $serif-font-family; font-size: 19px; font-weight: 600; color: $accent; border: 0; line-height: 1.4; }
+.post-index a:hover { color: $brand-color; }
+.post-index p { margin: 4px 0 0; font-size: 14.5px; color: $grey-color; line-height: 1.6; }
+@include media-query($on-palm) { .post-index li { grid-template-columns: 1fr; gap: 2px; } }
+
+/* ---------- Footer ---------- */
+.site-footer { border-top: 1px solid $rule; background: #fff; padding: 26px 0 34px; }
+.footer-note { font-size: 13px; color: $grey-color; margin: 0; line-height: 1.7; }
+.footer-note a { color: $grey-color-dark; border-bottom-color: $rule; }
+
+/* ---------- AI Compute Investment Map ---------- */
+.map-legend { font-size: 13px; color: $grey-color; margin-bottom: 16px; }
 .map-legend span { margin-right: 16px; }
-.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
-.dot.live { background: #2e7d4f; } .dot.wip { background: #b26b00; } .dot.plan { background: #9a9a9a; }
-.map-layer { border: 1px solid $grey-color-light; border-radius: 4px; margin: 0 0 8px; }
-.map-layer summary { cursor: pointer; list-style: none; padding: 12px 14px; display: flex; gap: 12px; align-items: baseline; }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; vertical-align: middle; }
+.dot.live { background: #2e7d4f; } .dot.wip { background: #b26b00; } .dot.plan { background: #a9a8a2; }
+.map-layer { border: 1px solid $rule; border-radius: 8px; margin: 0 0 8px; background: #fff; transition: border-color .15s, box-shadow .15s; }
+.map-layer:hover, .map-layer[open] { border-color: #c9c7bf; box-shadow: 0 2px 12px rgba(15, 47, 87, .05); }
+.map-layer summary { cursor: pointer; list-style: none; padding: 14px 16px; display: flex; gap: 14px; align-items: baseline; }
 .map-layer summary::-webkit-details-marker { display: none; }
 .map-layer summary::after { content: "›"; margin-left: auto; color: $grey-color; transition: transform .15s; }
 .map-layer[open] summary::after { transform: rotate(90deg); }
-.map-num { color: $grey-color; font-size: 13px; width: 22px; flex: none; }
-.map-name { font-weight: 600; }
-.map-q { display: block; font-weight: 400; font-size: 14px; color: $grey-color; }
-.map-body { padding: 0 14px 10px 48px; font-size: 15px; }
-.map-seg { padding: 6px 0; border-top: 1px dashed $grey-color-light; }
+.map-num { color: $brand-color; font-size: 12px; font-weight: 700; letter-spacing: .06em; width: 22px; flex: none; font-variant-numeric: tabular-nums; }
+.map-name { font-family: $serif-font-family; font-weight: 600; color: $accent; font-size: 17.5px; }
+.map-q { display: block; font-family: $base-font-family; font-weight: 400; font-size: 14px; color: $grey-color; }
+.map-body { padding: 0 16px 12px 52px; font-size: 15px; }
+.map-seg { padding: 8px 0; border-top: 1px dashed $rule; }
 .map-seg:first-child { border-top: 0; }
 .map-seg small { color: $grey-color; }
-.map-arrow { text-align: center; color: $grey-color; font-size: 12px; margin: -2px 0 6px; }
-.map-items { font-size: 15px; }
+.map-arrow { text-align: center; color: #b9b7af; font-size: 12px; margin: -2px 0 6px; }
+.map-items { font-size: 15px; line-height: 1.9; }
 .map-items a { white-space: nowrap; }
 
+/* coverage pages */
+.cov-table { font-size: 14px; width: 100%; }
+.cov-note { font-size: 13.5px; color: $grey-color; }
+
 /* NEW badge (top-right of a new item's name; blinks for 7 days) */
-.new-badge { display: inline-block; vertical-align: super; margin-left: 3px; padding: 0 4px; border-radius: 3px;
-  font-size: 10px; font-weight: 700; line-height: 1.5; color: #fff; background: #d32f2f; animation: newblink 1.2s ease-in-out infinite; }
-@keyframes newblink { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+.new-badge { display: inline-block; vertical-align: super; margin-left: 3px; padding: 0 4px; border-radius: 3px; border: 0;
+  font-size: 9.5px; font-weight: 700; letter-spacing: .04em; line-height: 1.5; color: #fff; background: #c43b3a; animation: newblink 1.2s ease-in-out infinite; }
+@keyframes newblink { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
 @media (prefers-reduced-motion: reduce) { .new-badge { animation: none; } }
+
+@media print { .site-header, .site-footer { display: none; } .chart { break-inside: avoid; } }

@@ -4,6 +4,7 @@ title: "What Is a Gigawatt of AI Inference Worth?"
 date: 2026-10-24 15:00:00 +0800
 lang: en
 alt: /zh/writing/2026/10/gigawatt-inference-worth/
+description: "One gigawatt of VR200 capacity earns about US$50bn a year in paid tokens in my base case and costs about US$12bn to own: roughly four times, with the caveats that matter."
 ---
 
 ## The short answer

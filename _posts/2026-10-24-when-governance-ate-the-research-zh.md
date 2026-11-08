@@ -5,6 +5,7 @@ date: 2026-10-24
 lang: zh
 alt: /writing/2026/10/when-governance-ate-the-research/
 permalink: /zh/writing/2026/10/when-governance-ate-the-research/
+description: "七週、一個部位、1.2 MB 的規則：一套多代理 AI 投資系統的事後檢討，它產出的是治理文件，而不是研究。"
 ---
 
 *本文譯自英文原文〈When Governance Ate the Research〉。*

@@ -5,6 +5,7 @@ date: 2026-10-24 12:00:00 +0800
 lang: zh
 alt: /writing/2026/10/aim-nine-days-in/
 permalink: /zh/writing/2026/10/aim-nine-days-in/
+description: "一筆 2 萬美元的委託，研究、稽核、部位規模都交給 AI 角色。這是它的第一份報告，以及為什麼一個看似「什麼都沒發生」的數字才是重點。"
 ---
 
 *本文為〈[當治理吃掉研究](/zh/writing/2026/10/when-governance-ate-the-research/)〉之續篇。*
