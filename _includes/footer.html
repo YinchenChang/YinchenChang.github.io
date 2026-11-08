@@ -7,3 +7,16 @@
     </p>
   </div>
 </footer>
+{%- if site.comments_endpoint and site.comments_endpoint != "" %}
+<script>
+// Visit counter: one record per page view to Andy's Google Sheet (tools/comments/Code.gs). No cookies, no IP.
+(function () {
+  var vid = ""; try { vid = localStorage.getItem("cvid") || ""; if (!vid) { vid = Math.random().toString(36).slice(2, 12); localStorage.setItem("cvid", vid); } } catch (e) {}
+  var ref = ""; try { ref = document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) {}
+  if (ref === location.hostname) ref = "";
+  var q = new URLSearchParams({ ev: "view", path: location.pathname, lang: "{{ page.lang | default: 'en' }}", vid: vid, ref: ref,
+    dev: /Mobi|Android/i.test(navigator.userAgent) ? "mobile" : "desktop", w: String(screen.width || "") });
+  try { fetch("{{ site.comments_endpoint }}?" + q.toString(), { mode: "no-cors", keepalive: true }); } catch (e) {}
+})();
+</script>
+{%- endif %}

@@ -5,6 +5,8 @@ en:
   - title: Writing
     url: /writing/
     new: writing
+  - title: Discuss
+    url: /comments/
   - title: About
     url: /about/
 zh:
@@ -14,5 +16,7 @@ zh:
   - title: 文章
     url: /zh/writing/
     new: writing
+  - title: 留言板
+    url: /zh/comments/
   - title: 關於
     url: /zh/about/
