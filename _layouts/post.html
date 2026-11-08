@@ -19,5 +19,7 @@ layout: default
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
+  {%- assign thread = page.url | remove_first: "/zh" -%}
+  {% include comments.html thread=thread title=page.title %}
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>

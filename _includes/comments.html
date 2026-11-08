@@ -1,0 +1,68 @@
+{%- comment -%}
+Comment board. Messages are stored in Andy's Google Sheet through an Apps Script web app
+(tools/comments/Code.gs); no reader login. include params: thread (shared key for both languages), title.
+Renders nothing until site.comments_endpoint is set in _config.yml.
+{%- endcomment -%}
+{%- if site.comments_endpoint and site.comments_endpoint != "" -%}
+{%- assign zh = page.lang == 'zh' -%}
+<section class="comments" id="comments" data-endpoint="{{ site.comments_endpoint }}" data-thread="{{ include.thread }}" data-title="{{ include.title | escape }}" data-lang="{{ page.lang | default: 'en' }}">
+  <h2 class="comments-title">{% if include.board %}{% if zh %}留言{% else %}Messages{% endif %}{% else %}{% if zh %}留言與討論{% else %}Comments{% endif %}{% endif %} <span class="comments-count"></span></h2>
+  <form class="comment-form" autocomplete="off">
+    <div class="cf-row">
+      <input name="name" maxlength="40" placeholder="{% if zh %}暱稱（可留空）{% else %}Name (optional){% endif %}" aria-label="{% if zh %}暱稱{% else %}Name{% endif %}">
+    </div>
+    <textarea name="text" rows="4" maxlength="2000" required placeholder="{% if zh %}寫下你的意見、問題或不同看法…{% else %}Your comment, question or counter-argument…{% endif %}" aria-label="{% if zh %}留言內容{% else %}Comment{% endif %}"></textarea>
+    <input name="hp" class="cf-hp" tabindex="-1" aria-hidden="true">
+    <div class="cf-foot">
+      <span class="cf-note">{% if zh %}不需登入。留言會公開顯示；請勿留下個人聯絡資料。{% else %}No sign-in needed. Comments are public; please don't post personal contact details.{% endif %}</span>
+      <button type="submit">{% if zh %}送出{% else %}Post{% endif %}</button>
+    </div>
+    <p class="cf-status" role="status"></p>
+  </form>
+  <ol class="comment-list"><li class="comment-empty">{% if zh %}載入中…{% else %}Loading…{% endif %}</li></ol>
+</section>
+<script>
+(function () {
+  var box = document.getElementById("comments"); if (!box) return;
+  var EP = box.dataset.endpoint, TH = box.dataset.thread, ZH = box.dataset.lang === "zh";
+  var T = ZH ? { empty: "還沒有留言，歡迎第一個發言。", fail: "留言暫時無法載入，請稍後再試。", sending: "送出中…",
+                 ok: "已送出，謝謝！", fast: "送出太頻繁，請 30 秒後再試。", len: "內容請在 2 到 2,000 字之間。", err: "送出失敗，請稍後再試。", reply: "作者回覆" }
+             : { empty: "No comments yet. Be the first.", fail: "Comments could not be loaded. Please try again later.", sending: "Posting…",
+                 ok: "Posted. Thank you!", fast: "Please wait 30 seconds before posting again.", len: "Please write between 2 and 2,000 characters.", err: "Could not post. Please try again later.", reply: "Author's reply" };
+  var vid = ""; try { vid = localStorage.getItem("cvid") || ""; if (!vid) { vid = Math.random().toString(36).slice(2, 12); localStorage.setItem("cvid", vid); } } catch (e) {}
+  var list = box.querySelector(".comment-list"), form = box.querySelector(".comment-form"), status = box.querySelector(".cf-status");
+  function el(tag, cls, text) { var x = document.createElement(tag); if (cls) x.className = cls; if (text != null) x.textContent = text; return x; }
+  function render(items) {
+    list.innerHTML = "";
+    box.querySelector(".comments-count").textContent = items.length ? "（" + items.length + "）" : "";
+    if (!items.length) { list.appendChild(el("li", "comment-empty", T.empty)); return; }
+    items.slice().reverse().forEach(function (c) {
+      var li = el("li", "comment");
+      var head = el("div", "comment-head"); head.appendChild(el("b", null, c.name || (ZH ? "訪客" : "Guest"))); head.appendChild(el("time", null, c.t));
+      li.appendChild(head); li.appendChild(el("div", "comment-body", c.text));
+      if (c.reply) { var r = el("div", "comment-reply"); r.appendChild(el("b", null, T.reply)); r.appendChild(el("div", null, c.reply)); li.appendChild(r); }
+      list.appendChild(li);
+    });
+  }
+  function load() {
+    fetch(EP + "?thread=" + encodeURIComponent(TH)).then(function (r) { return r.json(); })
+      .then(function (d) { render(d.comments || []); })
+      .catch(function () { list.innerHTML = ""; list.appendChild(el("li", "comment-empty", T.fail)); });
+  }
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var text = form.text.value.trim();
+    if (text.length < 2) { status.textContent = T.len; return; }
+    var btn = form.querySelector("button"); btn.disabled = true; status.textContent = T.sending;
+    var body = new URLSearchParams({ thread: TH, title: box.dataset.title, name: form.name.value.trim(), text: text,
+                                     lang: box.dataset.lang, vid: vid, hp: form.hp.value });
+    fetch(EP, { method: "POST", body: body }).then(function (r) { return r.json(); }).then(function (d) {
+      if (d.ok) { form.text.value = ""; status.textContent = T.ok; load(); }
+      else status.textContent = d.err === "too_fast" ? T.fast : d.err === "length" ? T.len : T.err;
+    }).catch(function () { status.textContent = T.err; })
+      .then(function () { btn.disabled = false; });
+  });
+  load();
+})();
+</script>
+{%- endif -%}

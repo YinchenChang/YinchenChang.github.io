@@ -9,3 +9,5 @@ plugins:
   - jekyll-seo-tag
   - jekyll-feed
 permalink: /writing/:year/:month/:title/
+# Google Apps Script web app for the comment board and visit counter (tools/comments/Code.gs). Empty = both off.
+comments_endpoint: ""

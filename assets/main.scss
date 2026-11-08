@@ -123,6 +123,35 @@ blockquote { border-left: 3px solid $rule; color: $grey-color-dark; font-style: 
 .post-index p { margin: 4px 0 0; font-size: 14.5px; color: $grey-color; line-height: 1.6; }
 @include media-query($on-palm) { .post-index li { grid-template-columns: 1fr; gap: 2px; } }
 
+/* ---------- Comments ---------- */
+.comments { margin-top: 56px; padding-top: 28px; border-top: 2px solid $accent; }
+.comments-title { font-size: 22px; margin: 0 0 16px; }
+.comments-count { font-family: $base-font-family; font-size: 15px; color: $grey-color; font-weight: 400; }
+.comment-form { background: #fff; border: 1px solid $rule; border-radius: 8px; padding: 16px; margin-bottom: 26px; }
+.comment-form input, .comment-form textarea { width: 100%; box-sizing: border-box; font: inherit; font-size: 15px; color: $text-color;
+  border: 1px solid $rule; border-radius: 6px; padding: 9px 12px; background: $background-color; transition: border-color .15s; }
+.comment-form input:focus, .comment-form textarea:focus { outline: none; border-color: $brand-color; background: #fff; }
+.comment-form .cf-row input { max-width: 260px; margin-bottom: 10px; }
+.comment-form textarea { resize: vertical; min-height: 96px; line-height: 1.6; }
+.comment-form .cf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.cf-foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 10px; }
+.cf-note { font-size: 12.5px; color: $grey-color; line-height: 1.5; }
+.comment-form button { flex: none; font: inherit; font-size: 14px; font-weight: 600; color: #fff; background: $accent; border: 0; border-radius: 6px;
+  padding: 8px 22px; cursor: pointer; transition: background .15s; }
+.comment-form button:hover { background: $brand-color; }
+.comment-form button:disabled { opacity: .5; cursor: default; }
+.cf-status { font-size: 13.5px; color: $brand-color; margin: 8px 0 0 !important; min-height: 1em; }
+.comment-list { list-style: none; margin: 0; }
+.comment { padding: 16px 0; border-bottom: 1px solid $rule; margin: 0; }
+.comment-head { display: flex; gap: 12px; align-items: baseline; margin-bottom: 4px; }
+.comment-head b { color: $accent; font-size: 15px; }
+.comment-head time { font-size: 12.5px; color: $grey-color; font-variant-numeric: tabular-nums; }
+.comment-body { white-space: pre-wrap; font-size: 15.5px; line-height: 1.7; overflow-wrap: anywhere; }
+.comment-reply { margin-top: 10px; padding: 10px 14px; background: $wash; border-left: 3px solid $accent; border-radius: 0 6px 6px 0; font-size: 15px; white-space: pre-wrap; }
+.comment-reply b { display: block; font-size: 12px; letter-spacing: .08em; color: $accent; margin-bottom: 2px; }
+.comment-empty { color: $grey-color; font-size: 14.5px; padding: 14px 0; }
+@include media-query($on-palm) { .cf-foot { flex-direction: column; align-items: flex-start; } }
+
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid $rule; background: #fff; padding: 26px 0 34px; }
 .footer-note { font-size: 13px; color: $grey-color; margin: 0; line-height: 1.7; }
