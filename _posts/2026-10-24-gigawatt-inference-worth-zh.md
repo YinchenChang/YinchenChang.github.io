@@ -5,6 +5,7 @@ date: 2026-10-24 15:00:00 +0800
 lang: zh
 alt: /writing/2026/10/gigawatt-inference-worth/
 permalink: /zh/writing/2026/10/gigawatt-inference-worth/
+description: "1 GW 的 VR200 算力，基準情境下每年約賺 500 億美元付費 token 營收，持有成本約 120 億美元：約 4 倍，以及這個倍數背後的限制。"
 ---
 
 *本文譯自英文原文〈What Is a Gigawatt of AI Inference Worth?〉。*

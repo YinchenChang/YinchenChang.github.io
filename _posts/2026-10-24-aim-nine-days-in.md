@@ -4,6 +4,7 @@ title: "Nine Days In: What an AI Mandate Does When Nothing Clears the Bar"
 date: 2026-10-24 12:00:00 +0800
 lang: en
 alt: /zh/writing/2026/10/aim-nine-days-in/
+description: "A US$20,000 mandate where AI roles do the research, audit and sizing. Its first report, and why a number that looks like nothing happened is the main result."
 ---
 
 *Follow-up to [When Governance Ate the Research](/writing/2026/10/when-governance-ate-the-research/).*

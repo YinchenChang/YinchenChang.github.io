@@ -5,6 +5,7 @@ date: 2026-10-31 12:10:00 +0800
 lang: zh
 alt: /writing/2026/10/cloud-beat-capex-took-it-back/
 permalink: /zh/writing/2026/10/cloud-beat-capex-took-it-back/
+description: "Azure、Google Cloud、AWS 第三季都打敗模型，目標價卻幾乎沒動：同一份財報裡更高的資本支出把好處拿了回去。"
 ---
 
 這一週是大型雲端的財報週。Microsoft、Alphabet、Amazon 的雲端業務都比我的模型好，有的好很多。但三家的目標價幾乎沒動：好消息被同一份財報裡更高的資本支出、或更貴的自研晶片抵掉了。這週也抓到兩個我自己模型的錯。以下分段寫。

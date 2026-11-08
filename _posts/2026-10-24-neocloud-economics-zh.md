@@ -5,6 +5,7 @@ date: 2026-10-24 14:30:00 +0800
 lang: zh
 alt: /writing/2026/10/neocloud-economics/
 permalink: /zh/writing/2026/10/neocloud-economics/
+description: "以同一套每 GW 成本模型建立的四家新雲收支模型，得到同一個結論：能證實的長約價格，收不回 GPU 的資本成本。"
 ---
 
 市場談新雲（neocloud），常從 backlog 開始：合約金額多大、客戶是誰、簽了幾年。過去一個多月，我替四家公司各建了一套收支模型——CoreWeave、Nebius、Oracle 的 OCI、WhiteFiber——全部從同一套每 GW 成本模型往上推。四套模型得出的共同結論，比任何一家的結論都更值得寫下來：

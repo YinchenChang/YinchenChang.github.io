@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{%- assign lang = page.lang | default: "en" -%}
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-kicker">{% if lang == 'zh' %}研究筆記{% else %}Research note{% endif %}</div>
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    {%- if page.description %}<p class="post-dek">{{ page.description | escape }}</p>{% endif %}
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%Y-%m-%d" }}</time>
+      <span class="sep">|</span>Andy Chang
+      {%- assign words = content | strip_html | size -%}
+      {%- if lang == 'zh' -%}{%- assign mins = words | divided_by: 500 | plus: 1 -%}<span class="sep">|</span>約 {{ mins }} 分鐘
+      {%- else -%}{%- assign mins = content | strip_html | number_of_words | divided_by: 220 | plus: 1 -%}<span class="sep">|</span>{{ mins }} min read{%- endif -%}
+      {%- if page.alt %}<span class="sep">|</span><a href="{{ page.alt | relative_url }}" class="lang-switch">{% if lang == 'zh' %}English version{% else %}中文版{% endif %}</a>{% endif %}
+    </p>
+  </header>
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>

@@ -4,6 +4,7 @@ title: "The Neocloud Ledger: Contract Prices Don't Cover the GPU, Only the Funde
 date: 2026-10-24 14:30:00 +0800
 lang: en
 alt: /zh/writing/2026/10/neocloud-economics/
+description: "Four neocloud models built on one cost-per-gigawatt base reach the same conclusion: verifiable contract prices do not cover the capital cost of the GPUs."
 ---
 
 Neocloud discussions usually start with backlog: how big the contracts are, who the customers are, how long the terms run. Over the past several weeks I built a funding-and-valuation model for each of four companies: CoreWeave, Nebius, Oracle's OCI and WhiteFiber. All four sit on the same per-gigawatt cost model. The conclusion they share is more useful than any one of them alone:
