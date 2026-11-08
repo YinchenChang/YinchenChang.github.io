@@ -6,7 +6,7 @@ alt: /zh/
 permalink: /
 ---
 
-<p class="home-intro">I am a fund manager in Taipei. I study AI compute as an economic system: what a gigawatt of capacity can earn, where each dollar of AI capital spending goes, and which parts of the supply chain keep their share.</p>
+<p class="home-intro">I study AI compute as an economic system: what a gigawatt of capacity can earn, where each dollar of AI capital spending goes, and which parts of the supply chain keep their share.</p>
 
 <div class="section-label">Start here</div>
 <div class="cards">
