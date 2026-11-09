@@ -6,6 +6,8 @@ alt: /
 permalink: /zh/
 ---
 
+<div class="site-notice"><b>建置中</b>本站仍在搭建，版面與內容會陸續調整；有任何建議，歡迎到<a href="{{ '/zh/comments/' | relative_url }}">留言板</a>告訴我。</div>
+
 <p class="home-intro">我把 AI 算力當成一個經濟系統來研究：1 GW 的算力能賺多少、AI 資本支出的每一塊錢流到哪裡、供應鏈的哪些環節守得住份額。</p>
 
 <div class="section-label">從這裡開始</div>

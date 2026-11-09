@@ -105,6 +105,10 @@ blockquote { border-left: 3px solid $rule; color: $grey-color-dark; font-style: 
 .sources ul { margin-left: 18px; }
 
 /* ---------- Home and lists ---------- */
+.site-notice { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; font-size: 14px; line-height: 1.6; color: $grey-color-dark;
+  background: #fff8e6; border: 1px solid #f1dca4; border-radius: 6px; padding: 10px 16px; margin: 0 0 28px; }
+.site-notice b { flex: none; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #8a5a00;
+  background: #fbe7b3; border-radius: 3px; padding: 1px 7px; }
 .home-intro { font-family: $serif-font-family; font-size: 24px; line-height: 1.55; color: $accent; margin-bottom: 30px; }
 .section-label { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: $grey-color; margin: 40px 0 10px;
   padding-bottom: 8px; border-bottom: 1px solid $rule; }
