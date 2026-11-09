@@ -6,6 +6,8 @@ alt: /zh/
 permalink: /
 ---
 
+<div class="site-notice"><b>Under construction</b>This site is still being built; layout and content will keep changing. Suggestions are welcome on the <a href="{{ '/comments/' | relative_url }}">discussion board</a>.</div>
+
 <p class="home-intro">I study AI compute as an economic system: what a gigawatt of capacity can earn, where each dollar of AI capital spending goes, and which parts of the supply chain keep their share.</p>
 
 <div class="section-label">Start here</div>
