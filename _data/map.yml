@@ -32,9 +32,9 @@
   zh: {n: "加速器", q: "GPU 與客製 ASIC：顆數與金額"}
   segs:
     - s: live
-      en: "GPU"
-      zh: "GPU"
-      tks: [NVDA, AMD]
+      en: "GPU and other merchant accelerators"
+      zh: "GPU 與其他商用加速器"
+      tks: [NVDA, AMD, CBRS]
     - s: live
       en: "Custom ASIC, design services and IP"
       zh: "客製 ASIC、設計服務與 IP"
