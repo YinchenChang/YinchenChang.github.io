@@ -16,7 +16,10 @@ Rules (Andy 2026-10-31):
     has the target), and profile lines that quote any target price. Rating shown only if
     SHOW_TW_RATING is True (default False until Andy decides).
   * Other markets: published as the map shows them.
-  * Models the map marks private (meta.private_models) are not mirrored.
+  * Every non-Taiwan company on the map links to its own model page (Andy 2026-11-14: "只要不是台股，
+    其他的个股都要附上他们自己的个股模型的连接"). This replaces the earlier rule that skipped
+    meta.private_models (OpenAI, Anthropic). If the file the map names has been superseded, the newest
+    model page of the same name in that folder's dist/ is mirrored instead.
 A guard scans every generated file before anything is written; one hit stops the build.
 
 Run:  python3 tools/build_coverage.py /path/to/company-models [--date YYYY-MM-DD]
@@ -95,10 +98,21 @@ def latest_event(sections):
     return (d.group(1) if d else None), t
 
 
+def model_src(cm: Path, m: dict):
+    """The model page the map names; if that file was superseded (moved to _待刪除), the newest page of the
+    same model in dist/ (file names start with the build date, so the last one sorted is the newest)."""
+    d = cm / m["folder"] / "dist"
+    src = d / m["file"]
+    if src.exists():
+        return src
+    title = m.get("title") or ""
+    cands = sorted(p for p in d.glob("*.html") if title and title in p.name)
+    return cands[-1] if cands else None
+
+
 def build(cm: Path, today: dt.date):
     data = json.loads((cm / "markets/invest_map/dist/data.json").read_text(encoding="utf-8"))
     meta, models, profiles = data["meta"], data["models"], data["profiles"]
-    private = set(meta.get("private_models", {}))
     state_path = SITE / "_data/coverage_state.json"
     prev = json.loads(state_path.read_text(encoding="utf-8")) if state_path.exists() else {}
     prev_items = prev.get("items", {})
@@ -130,10 +144,10 @@ def build(cm: Path, today: dt.date):
             "event_date": ev_date, "event": ev_text,
         }
         row["rating_en"] = RATING_EN.get(row["rating"], row["rating"]) if row["rating"] else None
-        # mirror the model page for non-Taiwan, non-private companies
-        if not tw and m and m.get("folder") not in private:
-            src = cm / m["folder"] / "dist" / m["file"]
-            if src.exists():
+        # mirror the model page for every non-Taiwan company
+        if not tw and m:
+            src = model_src(cm, m)
+            if src:
                 mirrors[m["folder"]] = src
                 row["model_url"] = f"/models/{m['folder']}.html"
         old = prev_items.get(tk, {})
