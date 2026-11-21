@@ -71,14 +71,14 @@
     - s: live
       en: "Power and cooling"
       zh: "電源與散熱"
-      tks: ["2308", "2301", "3017", "3324", "3653"]
+      tks: ["2308", "2301", "3017", "3324", "3653", VRT, ABBN]
 - en: {n: "Foundry, packaging and substrates", q: "Is wafer and packaging capacity the ceiling?"}
   zh: {n: "晶圓代工、封裝與載板", q: "晶圓與封裝產能是不是上限？"}
   segs:
     - s: live
       en: "Foundry, packaging and test services"
       zh: "晶圓代工、封裝與測試"
-      tks: ["2330", "2303", "5347", "3711", AMKR, "2449"]
+      tks: ["2330", "2303", "5347", "3711", AMKR, "2449", INTC, GFS]
     - s: live
       en: "Substrates, laminates and PCBs"
       zh: "載板、銅箔基板與 PCB"
@@ -89,7 +89,7 @@
     - s: live
       en: "Wafer fab equipment"
       zh: "晶圓製造設備"
-      tks: [ASML, AMAT, LRCX, KLAC]
+      tks: [ASML, AMAT, LRCX, KLAC, "8035"]
     - s: live
       en: "Test, dicing and packaging equipment"
       zh: "測試、切割與封裝設備"
