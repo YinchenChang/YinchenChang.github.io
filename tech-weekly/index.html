@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 技術週讀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm reading-room notice, precise, unhurried
+   IDEA: a library's weekly reading slip — one issue per week, stacked
+   PICTURE: a stack of issue slips, the top one blank and waiting (11-28)
+   COLOUR and TYPE: white, black, concrete planes, one safety-yellow mark; Hanken Grotesk + Noto Sans TC
+   LAYOUT: modest title, one drawing, then how each issue reads, then the archive */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#1a1a19);--ink:light-dark(#111111,#ecece8);--mute:light-dark(#5a5a57,#a9a9a4);--plane:light-dark(#d8d8d4,#2c2c2a);--line:light-dark(#c4c4bf,#3d3d3a);--hi:#ffe600}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 "Noto Sans TC","Hanken Grotesk",system-ui,sans-serif;overflow-x:clip}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+.wrap{max-width:1040px;margin:0 auto}
+h1{font:700 clamp(32px,6vw,48px)/1.05 "Hanken Grotesk","Noto Sans TC",sans-serif;margin:0 0 12px;text-wrap:balance}
+h2{font:700 24px/1.25 "Hanken Grotesk","Noto Sans TC",sans-serif;margin:0 0 16px}
+p{margin:0 0 14px;max-width:68ch}
+.lede{color:var(--mute);font-size:17px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.fig{position:relative;min-height:300px;background:var(--plane)}
+.fig svg{position:absolute;inset:0;width:100%;height:100%}
+.next{display:inline-block;margin-top:8px;padding:10px 14px;border:1px solid var(--ink);font-weight:500}
+.next b{background:var(--hi);color:#111;padding:0 4px}
+.plane{background:var(--plane)}
+ol.parts{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+ol.parts li{background:var(--bg);padding:18px 20px}
+ol.parts strong{display:block;font-size:17px;margin-bottom:4px}
+ol.parts span{color:var(--mute);font-size:15px;line-height:1.6;display:block}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:500;color:var(--mute)}
+.empty{color:var(--mute)}
+.foot{font-size:14px;color:var(--mute)}
+@media(max-width:600px){.hero{grid-template-columns:1fr}.fig{min-height:240px}}
+</style>
+</head>
+<body>
+<nav class="band" style="padding-bottom:0"><div class="wrap"><a href="/zh/" style="color:inherit">← Andy Chang 首頁</a></div></nav>
+<section class="band">
+ <div class="wrap hero">
+  <div>
+   <h1>AI 技術週讀</h1>
+   <p class="lede">每週六上午出刊。從一週的 AI 論文、技術報告與系統文件中，挑出長期最可能改變 AI 經濟學的三篇，寫成白話預讀版，逐段標出原文位置，方便對照閱讀。</p>
+   <div class="next">第一期：<b>2026-11-28（六）</b>上午</div>
+  </div>
+  <div class="fig" aria-label="一疊每週一張的閱讀單，最上面一張留白等待第一期">
+   <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" role="img">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#ececea"/></linearGradient></defs>
+    <g id="slips"></g>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<section class="band plane">
+ <div class="wrap">
+  <h2>每期怎麼讀（約 60–90 分鐘）</h2>
+  <ol class="parts">
+   <li><strong>本週主線</strong><span>三篇之間的關聯，或這週最值得記住的一件事。</span></li>
+   <li><strong>精讀一篇：先猜再讀</strong><span>開頭一兩題「讀前先猜」，答案摺疊，先猜再看。</span></li>
+   <li><strong>精讀：背景、方法、結果、限制</strong><span>關鍵數字附原文表或圖的編號；作者自述與獨立驗證分開標示。</span></li>
+   <li><strong>對投資判斷的含義</strong><span>影響需求、成本、硬體組成還是價值分配；只標「可能影響」的參數，不改任何模型。</span></li>
+   <li><strong>速讀兩篇</strong><span>一句話、方法三句、關鍵數字、含義兩三句。</span></li>
+   <li><strong>原文對照與名詞小抄</strong><span>固定版本連結、逐段原文位置；開放授權的論文才並列原文段落。</span></li>
+  </ol>
+ </div>
+</section>
+
+<section class="band">
+ <div class="wrap">
+  <h2>歷期</h2>
+  <table>
+   <thead><tr><th>日期</th><th>精讀</th><th>速讀</th></tr></thead>
+   <tbody id="archive"><tr><td colspan="3" class="empty">第一期出刊後列在這裡。</td></tr></tbody>
+  </table>
+  <p class="foot" style="margin-top:24px">每期由排程任務產出，精讀篇的數字與限制經另一個代理對照原文核對後才發布。本頁網址固定，每期更新後首頁換成最新一期，舊期保留在歷期表。內容為技術閱讀整理，不構成投資建議。</p>
+ </div>
+</section>
+
+<script>
+{
+ const g=document.getElementById('slips');
+ const n=5, out=[];
+ for(let i=n-1;i>=0;i--){
+  const x=70+i*14, y=40+i*12, top=i===0;
+  out.push(`<rect x="${x+6}" y="${y+8}" width="230" height="170" fill="#000" opacity="0.12"/>`);
+  out.push(`<rect x="${x}" y="${y}" width="230" height="170" fill="url(#g)" stroke="#9a9a96" stroke-width="1"/>`);
+  if(top){
+   out.push(`<rect x="${x+18}" y="${y+20}" width="70" height="14" fill="#ffe600"/>`);
+   out.push(`<text x="${x+22}" y="${y+31}" font-size="11" font-family="Hanken Grotesk, sans-serif" fill="#111">11-28</text>`);
+   for(let k=0;k<5;k++) out.push(`<line x1="${x+18}" y1="${y+60+k*20}" x2="${x+212}" y2="${y+60+k*20}" stroke="#d0d0cc" stroke-dasharray="3 4"/>`);
+  } else {
+   for(let k=0;k<5;k++) out.push(`<line x1="${x+18}" y1="${y+60+k*20}" x2="${x+(k%2?150:212)}" y2="${y+60+k*20}" stroke="#bdbdb8"/>`);
+  }
+ }
+ g.innerHTML=out.join('');
+}
+</script>
+</body>
+</html>
