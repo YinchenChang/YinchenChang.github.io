@@ -72,6 +72,27 @@ def sanitize_tw(fragment):
     return fragment
 
 
+# Taiwan names and tickers; filled in build(). Used to scrub Taiwan peers' valuation rows from overseas pages.
+TW_NAMES = set()
+PEER_WORDS = TW_FORBIDDEN + ["price target", "fair value", "implied price"]
+
+
+def sanitize_tw_peers(fragment):
+    """On a non-Taiwan page, drop every list item / table row / paragraph that names a Taiwan company
+    and also carries a valuation word or a valuation-sheet source (same unit and words as tools/check_tw.py)."""
+    if not fragment or not TW_NAMES:
+        return fragment
+
+    def bad(t):
+        if not any(w in t for w in PEER_WORDS):
+            return False
+        return any(re.search(rf"(?<![0-9A-Za-z]){re.escape(n)}(?![0-9A-Za-z])", t) for n in TW_NAMES)
+    for tag in ("li", "tr", "p"):
+        fragment = re.sub(rf"<{tag}\b[^>]*>.*?</{tag}>",
+                          lambda m: "" if bad(m.group(0)) else m.group(0), fragment, flags=re.S)
+    return fragment
+
+
 def hover(fragment):
     # the map shows sources on hover via its own script; here a plain title attribute does it
     return re.sub(r'data-src="([^"]*)"', r'title="\1" data-src="\1"', fragment or "")
@@ -118,6 +139,8 @@ def build(cm: Path, today: dt.date):
     prev_items = prev.get("items", {})
 
     rows, state, pages, mirrors = [], {}, {}, {}
+    TW_NAMES.clear()
+    TW_NAMES.update(n for v in data["valuation"] if is_tw(v) for n in (v.get("name"), v.get("tk")) if n)
     for v in data["valuation"]:
         tk, tw = v["tk"], is_tw(v)
         m = models.get(tk) or {}
@@ -343,7 +366,7 @@ def page_html(r, prof, tw):
     for sec, frag in prof["sections"].items():
         if sec == "來源":
             continue
-        frag = sanitize_tw(frag) if tw else frag
+        frag = sanitize_tw(frag) if tw else sanitize_tw_peers(frag)
         if not strip_tags(frag).strip():
             continue
         out.append(f"<h2>{html.escape(sec)}</h2>\n{hover(frag)}")
